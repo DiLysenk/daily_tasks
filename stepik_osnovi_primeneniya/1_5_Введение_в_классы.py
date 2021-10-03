@@ -30,7 +30,7 @@ class Buffer:
                 self.buffer_1 = self.buffer_1[5:]
 
     def get_current_part(self):
-        print(self.buffer_1)
+        return self.buffer_1
 
 
 # вернуть сохраненные в текущий момент элементы последовательности в порядке, в котором они были
@@ -43,6 +43,8 @@ def buffer():
     return program
 
 
-@pytest.mark.parametrize('a, b, c, v, result', [(1, 3, 4, 6, 14)])
-def test_buffer(buffer, a, b, c, v, result):
-    assert buffer.add(a, b, c, v) == result
+@pytest.mark.parametrize('a, b, c, v', [(1, 3, 4, 6)])
+def test_buffer(buffer, a, b, c, v):
+    buffer.add(a, b, c, v)
+    assert buffer.get_current_part() == [1, 3, 4, 6]
+
