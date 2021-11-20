@@ -1,2 +1,3 @@
-# daily_tasks
-for me
+# daily_tasks 
+
+#Tasks from udemy, stepik, pitonutor

@@ -28,10 +28,27 @@ class C(B):
 Мы просим вас промоделировать этот процесс, и понять существует ли путь от одного класса до другого."""
 
 
+names = {}
+def searchParents(child, parent):
+    parents = set()
+    def func(child):
+        if child not in names: return False
+        prts = names[child]
+        if len(prts):
+            for parent in prts:
+                parents.add(parent)
+                func(parent)
+        else:
+            return False
+    func(child)
+    return parent in parents
 
-
-
-
+for _ in range(int(input())):
+    arr = input().split()
+    names[arr[0]] = [] if len(arr) == 1 else arr[2:]
+for _ in range(int(input())):
+    parent, child = input().split()
+    print('Yes' if (child == parent and parent in names) or searchParents(child, parent) else 'No')
 
 
 
